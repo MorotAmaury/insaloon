@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 import { AuthenticationContext } from '../../3-context/1-authentication.context'
 
-import { googleSignOut, useAuthListener } from '../../4-utils/firebase.utils'
 
 
 const NavD = () => {
@@ -13,7 +12,6 @@ const NavD = () => {
 
     const [user, setUser] = useState(null)
     const [focusElement, setFocusElement] = useState(null)
-    useAuthListener(setUser)
 
     return (
             <nav className='desktopNav'>
@@ -33,11 +31,7 @@ const NavD = () => {
                         </Fragment>
                     )}
                     <li className='item'>
-                        {user ? (
-                            <button className='btn' onClick={() => googleSignOut()}>Se deconnecter </button>
-                        ): (
-                            <Link to={"/authentication"} className="btn" onClick={() => setAuthMethod("login")}>Se connecter</Link>
-                        )}
+            
                     </li>
                 </ul>
             </nav>        
