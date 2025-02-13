@@ -1,0 +1,16 @@
+@import '../../2-routes/0-app/variables.scss';
+footer 
+{
+    text-align: center;
+    color: $black;
+    .content 
+    {
+        font-size: clamp(10px, 1.05vw, 80px); // 80px a verif
+        margin: auto 0 1vw 0;
+    }
+    a
+    {
+        cursor: pointer;
+        color: $black;
+    }
+}

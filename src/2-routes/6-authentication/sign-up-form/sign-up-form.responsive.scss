@@ -1,0 +1,60 @@
+@media screen and (max-width: 768px) {
+    .error-message 
+    {
+        margin-top: 5vw;
+
+        font-size: 13px;
+    }
+    .sign-up-container 
+    {
+        width: 90vw;
+        h2
+        {
+            margin: 12vw auto 5vw ;
+            font-size: 7vw;
+        }
+        .select-container
+        {
+            background-color: blue;
+            margin-top: 5vw; 
+            font-size: 4vw;
+            
+        }
+        .group 
+        {
+            margin-top: 7.5vw;
+        }
+        .double 
+        {
+            display: block;
+            align-items: center;
+        
+            margin-top: 12vw;
+            
+            height: 20vw;
+            
+            .group 
+            {
+                flex: 1;
+                &:first-child
+                {
+                    margin-right:0vw;
+                }
+            }
+        }
+        button 
+        {
+            margin-top: 8vw;
+        
+            width: 100%;
+            height: 10vw;
+            border-radius: 1.5vw;
+            border: none;
+            font-size: 5vw;
+            &:hover 
+            {
+                border-radius:2vw;
+            }
+        }
+    }
+}

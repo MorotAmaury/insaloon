@@ -1,0 +1,75 @@
+@import '../0-app/variables.scss';
+@media screen and (max-width: 768px) {
+.home
+{
+    z-index: 0;
+    .home-title 
+    {
+        margin-top: 25vw;
+        font-size: 10vw;
+        width: 95%;
+        
+        line-height: 11vw;
+    }
+    .subtitle
+    {
+        line-height:8vw;
+        margin-top: 11vw;
+        width: 90vw;
+        font-size: 6vw;
+    }
+    .discover-title 
+    {
+        margin:11vw auto;
+        line-height: 10vw;
+        font-size: 8vw;
+        width: 100%;
+    }
+    .video-container
+    {
+        width: 90vw;
+        .video
+        {
+            border-radius: 3vw;
+            box-shadow:
+            2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+            6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+            12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+            41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+            ;
+        }
+    }
+    .separateur 
+    {
+        display: none;
+    }
+    .logcall-button 
+    {
+        display: block;
+        margin: -3vw auto 4vw; 
+        font-size: 3.6vw;
+        border: none;
+        height: 7vw;
+        width: 27vw;
+
+        border-radius:4vw;
+        background-color: $important;
+        color: $white;
+        transition: all ease 0.3s;
+        box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07)
+        ;
+        
+        &:hover 
+        {
+            transform: translateY(-7.5%);
+        }
+    }
+}
+}
