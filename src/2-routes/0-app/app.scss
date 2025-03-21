@@ -34,7 +34,6 @@ ol, ul {
 }
 a
 {
-    color: black;
     text-decoration: none;
 }
 button 
@@ -58,7 +57,8 @@ table {
 body 
 {
     margin: 0;
-    background-color: $white;    
+    background-color: $white !important;    
+
     font-family: 'Inter', sans-serif !important;
 }
 *

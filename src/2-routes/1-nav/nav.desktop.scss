@@ -7,15 +7,17 @@
     justify-content: space-between;
     align-items: center;
 
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 1vw;
     left: 2vw;
 
-    height: 7vw;
+    height: 4vw;
     width: 96vw;
+    
+    color: $black;
 
-    color: #001524;
-    background-color: $white;
+    border-radius: 4vw;
+    background-color: $important;
     font-family: 'Inter', sans-serif;
 
 
@@ -59,8 +61,8 @@
     .logo
     {
         margin-left: 1.5vw;
-
         font-size: 2vw;
+        color: $black;
         font-weight: 700;
         font-family: 'Paytone One', sans-serif;  
         span 
@@ -68,16 +70,7 @@
             color: $important;
         }
         position: relative;
-        &::before 
-        {
-            content: "Le Blog";
-            position: absolute;
-            top: 2vw;
-            right: -1vw;
-            font-family: inter;
-            font-size: 0.8vw;
-            font-weight: 400;
-        }
+      
     }
     .nav-items
     {
@@ -93,11 +86,7 @@
             margin-left: 3vw;
             transition: all ease 0.3s;
             a {
-              opacity: 75%;
-              &:hover 
-              {
-                opacity: 100%;
-              }
+                color: $black;
             }
             &:hover
             {

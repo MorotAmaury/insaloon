@@ -1,0 +1,21 @@
+@import '../0-app/variables.scss';
+
+.defis 
+{
+    margin-top: 10vw;
+    .title 
+    {
+        text-align: center;
+        font-size: 2.5vw;
+    }
+    .defis-container 
+    {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 90vw;    
+        height: 10vw;
+        margin:2vw auto;
+
+    }
+}

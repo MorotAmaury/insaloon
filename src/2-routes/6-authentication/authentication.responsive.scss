@@ -1,0 +1,20 @@
+@media screen and (max-width: 768px) {
+    .authentication-container 
+    {
+        .login-signup
+          {
+            left: 0vw;
+        
+
+            margin-top: 4vw;
+            margin-left: 10vw;
+            width: 100%;
+            span  
+            {
+              cursor: pointer;
+              margin-left: 1vw;
+
+            }
+          }
+    }
+}
