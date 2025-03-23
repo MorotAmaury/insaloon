@@ -19,9 +19,12 @@
     &:hover {
       transform: scale(1.05);
     }
-  
-
-    &.valider::before
+    &.valider:first-child {
+        filter: grayscale(100%);
+        opacity: 0.6;
+        position: relative;
+        transition: all 0.3s ease;
+    &::before
     {
         content: 'Validé !';
         transform: rotate(35deg);
@@ -33,7 +36,7 @@
         background-color: green;
         border-radius: 0.2vw;
     }
-  
+}
     .defis-card-header {
     margin-top: 1vw;
     height:5vw    ;
