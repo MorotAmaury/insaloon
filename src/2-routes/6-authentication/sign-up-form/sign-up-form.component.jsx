@@ -2,15 +2,13 @@ import './sign-up-form.styles.scss'
 import './sign-up-form.responsive.scss'
 import { Fragment, useContext, useEffect, useState} from "react";
 
-import { UserContext } from "../../../3-context/0-user.context";
 import { AuthenticationContext } from "../../../3-context/1-authentication.context";
-import { PaymentContext } from "../../../3-context/2-payment.context";
-import { SelectContext } from "../../../3-context/5-select.context";
 
 import {createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, emailInUse, verificationEmail,} from "../../../4-utils/firebase.utils";
 
 import FormInput from "../../../1-components/2-form-input/form-input.component";
 import Loader from '../../../1-components/12-loader/loader.component';
+import { useNavigate } from 'react-router-dom';
 
 
 const defaultFormFields = {
@@ -27,7 +25,8 @@ const validateEmail = (email) => {
 };
 
 const SignUpForm = () => {
-  
+  const navigate = useNavigate()
+
   const { setAuthMethod } = useContext(AuthenticationContext);;
 
   const [loading, setLoading] = useState(false);
@@ -64,8 +63,7 @@ const SignUpForm = () => {
       );
       await createUserDocumentFromAuth(user, { nom, prenom});
       resetFormFields();
-      await verificationEmail(user);
-      setAuthMethod("verif-email")
+      navigate('../.')
     } catch (error) {
         console.log(error);
     }
@@ -93,6 +91,7 @@ const SignUpForm = () => {
     }
     setLoading(true)
     await successAuth()
+    setLoading(false)
   }
   return (
     <Fragment>

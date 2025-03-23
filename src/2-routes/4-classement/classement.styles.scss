@@ -1,4 +1,162 @@
+@import '../0-app/variables.scss';
+
 .classement-container
 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 10vw;
+    .podium 
+    {
+        display: flex;
+        justify-content: center;
+        width: 90vw;
+        div 
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .first 
+        {
+            cursor: pointer;
+            margin: 0 8vw;
+            height: 38vw;
+            border-radius: 1vw;
+            padding: 1vw;
+            transition: all ease 0.4s;
+            &:hover 
+            {
+                background-color: $important;
+                color: white;
+                transform: translateY(-1%);
+            }
+            .name 
+            {
+                font-size: 3vw;
+                margin-bottom: 1.5vw;
+            }
+            .tickets 
+            {
+                font-size: 2vw;
+
+            }
+            .etoile 
+            {
+                svg 
+                {
+                    width: 25vw;
+                    height: 25vw;
+                }
+            }
+        }
+        .second 
+        {
+            height: 22vw;
+            border-radius: 1vw;
+            padding: 1vw;
+            margin-top: 7.5vw;
+            transition: all ease 0.4s;
+            &:hover 
+            {
+                background-color: $important;
+                color: white;
+                transform: translateY(-1%);
+            }
+            .name 
+            {
+                font-size: 1.5vw;
+                margin-bottom: 0.75vw;
+            }
+            .tickets 
+            {
+                font-size: 1.3vw;
+
+            }
+            .etoile 
+            {
+                svg 
+                {
+                    width: 15vw;
+                    height: 15vw;
+                }
+            }
+        }
+        .third 
+        {
+
+            height: 16vw;
+            border-radius: 1vw;
+            padding: 1vw;
+            margin-top: 12vw;
+            transition: all ease 0.4s;
+            &:hover 
+            {
+                background-color: $important;
+                color: white;
+                transform: translateY(-1%);
+            }
+            .name 
+            {
+                font-size: 1.5vw;
+                margin-bottom: 0.75vw;
+            }
+            .etoile 
+            {
+                svg 
+                {
+                    width: 10vw;
+                    height: 10vw;
+                }
+            }
+        }
+    }
+    .user-card-container 
+    {
+        margin-top: 5vw;
+
+        width: 50vw;
+        .user-card 
+        {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.2vw 1vw 0.2vw 0.2vw;
+            border: 2px solid $important;
+            margin-bottom:1.5vw ;
+            border-radius: 2vw;
+            transition: all ease 0.3s;
+
+            .info 
+            {
+                display: flex;
+                align-items: center;
+                p 
+                {
+                    margin-left: 0.4vw;
+                    font-size: 1.2vw;
+                }
+                .etoile 
+                {
+                    margin-right: 1vw;       
+                    svg 
+                    {
+                        width: 5vw;
+                        height: 5vw;
+                    }
+                }
+            }
+            .ticket
+            {
+                font-size:1.2vw ;
+            }
+            &:hover 
+            {
+                background-color: $important;
+                color: white;
+                transform: translate(1%, -3%);
+            }
+        }
+    }
 }

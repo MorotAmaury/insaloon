@@ -9,7 +9,6 @@ import SignInForm from './sign-in-form/sign-in-form.component'
 import SignUpForm from './sign-up-form/sign-up-form.component'
 
 const Authentication = () => {
-    const navigate = useNavigate()
     const { authMethod, setAuthMethod } = useContext(AuthenticationContext)
 
     // responsive 
@@ -27,10 +26,6 @@ const Authentication = () => {
         return () => window.removeEventListener('resize', handleResize)
     }, []) 
 
-    const handleClick = () => {
-        navigate('/vente')
-        setAuthMethod('login')
-    }
 
     return (
         <div className='authentication-container'>
@@ -42,18 +37,13 @@ const Authentication = () => {
                         <span onClick={() => setAuthMethod("signup")}>S'inscire</span>
                     </p>
                 </Fragment>
-                ) : authMethod === 'signup' ? (
+                ) : authMethod === 'signup' && (
                 <Fragment> 
                     <SignUpForm/>
                     <p className='login-signup'>Vous êtes déjà inscrit ?  
                         <span onClick={() => setAuthMethod('login')}>Se connecter</span>
                     </p>
                 </Fragment>
-            ) : (
-                <div className='email-verif-container'>
-                    <p>Un email de vérification a été envoyé. Veuillez vérifier votre boîte de réception.</p>
-                    <button onClick={handleClick}>Ok</button>
-                </div>
             )}
         </div>
     )

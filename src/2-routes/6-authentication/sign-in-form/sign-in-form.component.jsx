@@ -39,7 +39,7 @@ const SignInForm = () => {
       resetFormFields();
       setCurrentUser(user);
       setEmail(email)
-
+      navigate('../')
       
     } catch (error) {
       switch (error.code) {

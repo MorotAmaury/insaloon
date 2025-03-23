@@ -1,36 +1,91 @@
 @import '../../0-app/variables.scss';
 
-.defis-card 
-{
+.defis-card {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
-    margin: 2vw 5vw;
-
-    width: 20vw;
-    height: 20vw;
-
-    border-radius: 2vw;
-    color: white;
-    background-color: $important;
-
-    .card-title 
-    {
-        margin-top: 2vw;
-        font-size: 1.5vw;
+    justify-content: space-between;
+    background-color: #fdf3d4;
+    border: 4px solid #5c3d1a;
+    border-radius: 12px;
+    width: 16vw;
+    height: 27vw;
+    margin: 2vw;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    font-family: 'Special Elite', serif;
+    position: relative;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.05);
     }
-    .card-description 
+  
+
+    &.valider::before
     {
-        margin-top: 2vw;
-        max-width: 80%;
-        line-height: 1.5vw;
-        text-align: justify;
-    }
-    .card-reward 
-    {
+        content: 'Validé !';
+        transform: rotate(35deg);
         position: absolute;
-        bottom: 2vw;
+        top: -0.5vw;
+        right: -2vw;    
+        padding: 0.5vw;
+        color: white;
+        background-color: green;
+        border-radius: 0.2vw;
     }
-}
+  
+    .defis-card-header {
+    margin-top: 1vw;
+    height:5vw    ;
+      text-align: center;
+        
+      h2 {
+        font-size: 1.3vw;
+        color: #8b0000;
+        font-weight: 800;
+        margin: 0;
+        text-transform: uppercase;
+      }
+    }
+    .complete 
+    {
+        color: black;
+        background-color: white;
+        padding: 0.5vw;
+        border-radius: 0.3vw;
+        position: absolute;
+        z-index: 1;
+        bottom: 0.2vw;
+        right:-2.5vw;
+        transform: rotate(-35deg);
+    }
+    .defis-card-image {
+        margin-top: -2vw;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    //   padding: 10px;
+  
+      img {
+        max-height: 200px;
+        max-width: 100%;
+        object-fit: contain;
+        // padding: 10px;
+      }
+    }
+  
+    .defis-card-footer {
+      padding: 15px;
+      text-align: center;
+      background-color: #e6d5b8;
+      border-top: 2px solid #5c3d1a;
+  
+      .prime {
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+  }
+  

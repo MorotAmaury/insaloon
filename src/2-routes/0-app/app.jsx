@@ -6,6 +6,7 @@ import Home from '../2-home/home.component';
 import Authentication from '../6-authentication/authentication.component';
 import Defis from '../3-defis/defis.component';
 import Classement from '../4-classement/classement.component';
+import Admin from '../5-admin/admin.component.jsx';
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
     <Route path='/authentication' element={<Authentication/>}/>
     <Route path='defis' element={<Defis/>}/>
     <Route path='classement' element={<Classement/>}/>
+    <Route path='admin' element={<Admin/>}/>
     </Route>
  </Routes>
 

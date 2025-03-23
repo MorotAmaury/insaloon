@@ -14,10 +14,10 @@
     height: 4vw;
     width: 96vw;
     
-    color: $black;
+    // color: $black;
 
     border-radius: 4vw;
-    background-color: $important;
+    // background-color: $important;
     font-family: 'Inter', sans-serif;
 
 
@@ -62,13 +62,10 @@
     {
         margin-left: 1.5vw;
         font-size: 2vw;
-        color: $black;
+        color: $important;
         font-weight: 700;
         font-family: 'Paytone One', sans-serif;  
-        span 
-        {
-            color: $important;
-        }
+        
         position: relative;
       
     }
@@ -86,7 +83,7 @@
             margin-left: 3vw;
             transition: all ease 0.3s;
             a {
-                color: $black;
+                color: $important;
             }
             &:hover
             {

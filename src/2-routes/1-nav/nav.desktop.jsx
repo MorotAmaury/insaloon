@@ -18,15 +18,19 @@ const NavD = () => {
     
     return (
             <nav className='desktopNav'>
-                <Link to={'/'} className='logo' onClick={() => setFocusElement('home')}>INSA'LOON</Link>
+                <Link to={'/'} className='logo' onClick={() => setFocusElement('home')}>INSALOON</Link>
                 <div className={`focus-animation ${focusElement}`}></div>
                 <ul className='nav-items'>
                     {user && (
                         <Fragment>
-                            <li className='item' onClick={() => setFocusElement('analyse')}>
+                            <li className='item' onClick={() => setFocusElement('')}>
+                            <Link to={'admin'}>Admin</Link>
+
+                            </li>
+                            <li className='item' onClick={() => setFocusElement('')}>
                                 <Link to={'defis'}>Defis</Link>
                             </li>
-                            <li className='item' onClick={() => setFocusElement('colles')}> 
+                            <li className='item' onClick={() => setFocusElement('')}> 
                                 <Link to={'classement'}>Classement</Link>
                             </li>         
                        

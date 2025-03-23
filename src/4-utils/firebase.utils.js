@@ -1,5 +1,5 @@
 import { initializeApp} from 'firebase/app'
-import { getFirestore, collection, getDocs, query} from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, addDoc} from 'firebase/firestore';
 import {
   getAuth, 
   onAuthStateChanged, 
@@ -12,7 +12,6 @@ import {
 import { doc, setDoc, getDoc, updateDoc} from 'firebase/firestore';
 import { useEffect } from 'react';
 
-import { onSnapshot, enableIndexedDbPersistence } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: "AIzaSyCG5TA3lOGhPg-oi7p-8Kb-XHIkh5SlX2Q",
     authDomain: "insaloon-c7624.firebaseapp.com",
@@ -27,7 +26,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth()
-const db = getFirestore(app)
+export const db = getFirestore(app)
 
 export const useAuthListener = (setUser) => {
   useEffect(() => {
@@ -38,6 +37,37 @@ export const useAuthListener = (setUser) => {
   }, [])
 }
 
+export const fetchUsers = async () => {
+    try {
+      const usersCollectionRef = collection(db, 'users'); // ou 'users2' si besoin
+      const querySnapshot = await getDocs(usersCollectionRef);
+
+      const usersList = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      return usersList
+    } catch (error) {
+      console.error('Erreur de récupération des utilisateurs:', error);
+    }
+  };
+
+  export const incrementNombreTickets = async (userId, currentTickets, montant) => {
+    const userRef = doc(db, 'users', userId);
+    console.log(montant);
+    
+    try {
+      await updateDoc(userRef, {
+        nombreTickets: currentTickets + montant,
+      });
+  
+      return true; // tu peux renvoyer ce que tu veux gérer ensuite
+    } catch (error) {
+      console.error("Erreur lors de l'incrémentation des tickets:", error);
+      return false;
+    }
+  };
 export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, callback)
 
 export const setInfo = async (userId, info, value) => {
@@ -57,9 +87,12 @@ export const googleSignOut = () => signOut(auth)
 export const getInfo = async (userId, info) => {
   const userDocRef = doc(db, 'users', userId);
   const userDoc = await getDoc(userDocRef)
+  console.log('tew');
   
   if (userDoc.exists()) {
     const userData = userDoc.data();    
+    console.log(info, userData[info]);
+    
     return userData[info]
   }
 }
@@ -141,9 +174,29 @@ export const resetPassword = (email) => {
     }
   })
 }
-
-export const verificationEmail = (user) => sendEmailVerification(user)
-
+export const addDefi = async (defi) => {
+  try {
+    const docRef = await addDoc(collection(db, 'defis'), defi);
+    console.log('Défi ajouté avec ID : ', docRef.id);
+    return true;
+  } catch (error) {
+    console.error('Erreur lors de l\'ajout du défi : ', error);
+    return false;
+  }
+};
+export const fetchDefis = async () => {
+  try {
+    const defisCollection = collection(db, 'defis');
+    const defiSnapshot = await getDocs(defisCollection);
+    const defisList = defiSnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return defisList
+  } catch (error) {
+    console.error('Erreur lors de la récupération des défis :', error);
+  }
+};
 export const emailInUse = async (test_email) => {
   try {
     const db = getFirestore();
