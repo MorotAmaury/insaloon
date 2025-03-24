@@ -246,7 +246,7 @@ export const addDefi = async (defiData) => {
     const defisCollection = collection(db, 'defis');
 
     const snapshot = await getDocs(defisCollection);
-
+    
     const existingIds = snapshot.docs.map(doc => parseInt(doc.id)).filter(id => !isNaN(id));
 
     const maxId = existingIds.length > 0 ? Math.max(...existingIds) : 0;
@@ -258,10 +258,11 @@ export const addDefi = async (defiData) => {
       id : nextId,
       nombreFini: 0
     };
-
+    console.log('yo');
+    
     // Créer le document avec l'id choisi
-    const defiRef = doc(db, 'defis', nextId);
-
+    const defiRef = doc(db, 'defis', String(nextId));
+    
     await setDoc(defiRef, newDefi);
 
     console.log('Défi ajouté avec ID :', nextId);
