@@ -25,3 +25,20 @@
 
     }
 }
+
+@media (max-width: 768px) {
+    .home-container
+    {
+        .title 
+        {
+            margin-top: 40vw;
+            font-size: 9vw;
+        }
+        .logo 
+        {
+            margin-top:15vw;
+            width: 70vw;
+            height: 70vw;
+        }
+    }
+}

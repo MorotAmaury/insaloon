@@ -60,6 +60,14 @@ const Defis = () => {
             valider={defisValider.includes(defi.id)}
           />
         ))}
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
+        <DefisCard defi={{ id: 'defi-1', name: 'Défi 1', points: 10 }} valider={false} />
       </div>
     </div>
   );

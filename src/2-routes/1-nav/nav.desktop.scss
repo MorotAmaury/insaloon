@@ -1,107 +1,168 @@
 @import '../0-app/variables.scss';
-.desktopNav
-{
 
+.desktopNav {
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    
     position: fixed;
     top: 1vw;
     left: 2vw;
-
+    
     height: 4vw;
     width: 96vw;
     
-    // color: $black;
-
     border-radius: 4vw;
-    // background-color: $important;
     font-family: 'Inter', sans-serif;
 
-
-    .focus-animation 
-    {
+    .focus-animation {
         position: absolute;
         bottom: 35%;
-        
         height: 2.5px;
-        border-radius:10vw;
+        border-radius: 10vw;
         width: 0;
         background-color: $important;
         transition: all ease 0.3s;
-        &.home 
-        {
+        
+        &.home {
             display: none;
         }
-        &.analyse 
-        {
+        &.analyse {
             left: 54.15%;
-            width:5.8vw;
+            width: 5.8vw;
         }
-        &.colles
-        {
+        &.colles {
             left: 63.4%;
             width: 5.9vw;
         }
-        &.bibliotheque 
-        {
+        &.bibliotheque {
             left: 72.5%;
             width: 8.6vw;
         }
-        &.faq 
-        {
+        &.faq {
             left: 84.35%;
             width: 2.18vw;
         }
     }
 
-
-    .logo
-    {
+    .logo {
         margin-left: 1.5vw;
         font-size: 2vw;
         color: $important;
         font-weight: 700;
-        font-family: 'Paytone One', sans-serif;  
-        
+        font-family: 'Paytone One', sans-serif;
         position: relative;
-      
     }
-    .nav-items
-    {
+
+    .nav-items {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        
         margin-right: 3vw;
-
         font-size: 1.13vw;
-        .item
-        {
+
+        .item {
             margin-left: 3vw;
             transition: all ease 0.3s;
+            
             a {
                 color: $important;
             }
-            &:hover
-            {
+
+            &:hover {
                 transform: translateY(-0.15vw);
             }
-            .btn
-            {
+
+            .btn {
                 margin: 0 1vw;
                 padding: 0.4vw 1.3vw;
-
                 border: 1px solid $secondary;
                 border-radius: 0.4vw;
-
                 opacity: 100%;
-                font-size: clamp(12px, 1.28vw, 100px); // 100px a verif;
+                font-size: clamp(12px, 1.28vw, 100px);
                 background-color: $secondary;
                 color: white;
                 transition: all ease 0.35s;
+            }
+        }
+
+        // Mobile responsive - burger menu
+        @media (max-width: 768px) {
+            display: none;  // Hides default nav items
+          
+        }
+    }
+    @media (max-width: 768px) {
+        .logo {
+            font-size: 6vw;
+            margin-top: 7.5vw;
+            margin-left: 3vw;
+        }
+    }
+    .burger {
+        display: none;
+        cursor: pointer;
+        z-index: 100;
+        margin-top: 7.5vw;
+        margin-right: 3vw;
+        div {
+            width: 25px;
+            height: 3px;
+            background-color: $important;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            display: block;
+        }
+
+        &.open div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+            background-color: $white;
+        }
+
+        &.open div:nth-child(2) {
+            opacity: 0;
+            background-color: $white;
+        }
+
+        &.open div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+            background-color: $white;
+        }
+    }
+
+    // Mobile menu items
+    .nav-items.open {
+        .burger 
+        {
+            color: black;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: $important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        gap: 3rem;
+        z-index: 99;
+        transition: right 0.3s ease-in-out;
+
+        .item {
+            &:first-child
+            {
+                margin-top: 60vw;
+            }
+            margin-left: 0;
+            font-size: 4vw;
+
+            a {
+                color: white;
             }
         }
     }

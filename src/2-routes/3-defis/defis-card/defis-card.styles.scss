@@ -13,45 +13,49 @@
     margin: 2vw;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     font-family: 'Special Elite', serif;
-    position: relative;
     transition: transform 0.3s ease;
   
     &:hover {
       transform: scale(1.05);
     }
+
     &.valider {
         filter: grayscale(100%);
         opacity: 0.6;
-        position: relative;
         transition: all 0.3s ease;
-    &::before
-    {
-        content: 'Validé !';
-        transform: rotate(35deg);
-        position: absolute;
-        top: -0.5vw;
-        right: -2vw;    
-        padding: 0.5vw;
-        color: white;
-        background-color: green;
-        border-radius: 0.2vw;
+        &::before {
+            content: 'Validé !';
+            transform: rotate(35deg);
+            position: absolute;
+            top: -0.5vw;
+            right: -2vw;    
+            padding: 0.5vw;
+            color: white;
+            background-color: green;
+            border-radius: 0.2vw;
+        }
     }
-}
+
     .defis-card-header {
-    margin-top: 1vw;
-    height:5vw    ;
-      text-align: center;
+        margin-top: 1vw;
+        height: 5vw;
+        text-align: center;
         
-      h2 {
-        font-size: 1.3vw;
-        color: #8b0000;
-        font-weight: 800;
-        margin: 0;
-        text-transform: uppercase;
-      }
+        h2 {
+            font-size: 1.3vw;
+            color: #8b0000;
+            font-weight: 800;
+            @media (max-width: 760px) {
+              margin-top: 1vw;
+              font-size: 6vw !important;
+              justify-content: center;
+          }
+            margin: 0;
+            text-transform: uppercase;
+        }
     }
-    .complete 
-    {
+
+    .complete {
         color: black;
         background-color: white;
         padding: 0.5vw;
@@ -59,36 +63,60 @@
         position: absolute;
         z-index: 1;
         bottom: 0.2vw;
-        right:-2.5vw;
+        right: -2.5vw;
         transform: rotate(-35deg);
     }
+
     .defis-card-image {
         margin-top: -2vw;
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    //   padding: 10px;
-  
-      img {
-        max-height: 200px;
-        max-width: 100%;
-        object-fit: contain;
-        // padding: 10px;
+        @media (max-width: 760px) {
+          margin-top: 6vw;
+          margin-bottom: 6vw;
       }
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            max-height: 16vw;
+            @media (max-width: 760px) {
+              max-height: 150px;
+          }
+            max-width: 100%;
+            object-fit: contain;
+        }
     }
-  
+
     .defis-card-footer {
-      padding: 15px;
-      text-align: center;
-      background-color: #e6d5b8;
-      border-top: 2px solid #5c3d1a;
-  
-      .prime {
-        font-size: 20px;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
+        padding: 15px;
+        text-align: center;
+        background-color: #e6d5b8;
+        border-top: 2px solid #5c3d1a;
+
+        .prime {
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
     }
-  }
-  
+
+    // Mobile responsiveness
+    @media (max-width: 768px) {
+        width: 430vw;
+        height: auto;
+        margin: 2vw auto;
+        .defis-card-header h2 {
+            font-size: 3vw;
+        }
+    }
+
+    @media (max-width: 480px) {
+        width: 70vw;
+        height: auto;
+        .defis-card-header h2 {
+            font-size: 4vw;
+        }
+    }
+}
+

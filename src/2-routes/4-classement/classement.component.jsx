@@ -39,10 +39,10 @@ const Classement = () => {
             <p className='tickets'><i className='fa-solid fa-ticket'></i> {users[0]?.nombreTickets}</p>
         </div>
         <div className='third'>
-            <Etoile text={users[2]?.classement} couleur='#cd7f32'/>
-            <p className='name'>{users[2]?.prenom}</p>
-            <p className='name'>{users[2]?.nom}</p>
-            <p className='tickets'><i className='fa-solid fa-ticket'></i> {users[2]?.nombreTickets}</p>
+            <Etoile text='3' couleur='#cd7f32'/>
+            <p className='name'>{users[2]?.prenom} Moi</p>
+            <p className='name'>{users[2]?.nom}Morot</p>
+            <p className='tickets'><i className='fa-solid fa-ticket'></i> {users[2]?.nombreTickets}30</p>
         </div>
       </div>
       <div className="user-card-container">
@@ -57,7 +57,42 @@ const Classement = () => {
           
           </div>
         ))}
-   
+       <div className="user-card">
+            <div className='info'>
+                <Etoile text='2'/>
+                <p> cocuouc</p>
+                <p>ttsagfda</p>
+            </div>
+            <p className='ticket'><i className='fa-solid fa-ticket'></i> 11</p>
+          
+          </div>
+       <div className="user-card">
+            <div className='info'>
+                <Etoile text='2'/>
+                <p> cocuouc</p>
+                <p>ttsagfda</p>
+            </div>
+            <p className='ticket'><i className='fa-solid fa-ticket'></i> 11</p>
+          
+          </div>
+       <div className="user-card">
+            <div className='info'>
+                <Etoile text='2'/>
+                <p> cocuouc</p>
+                <p>ttsagfda</p>
+            </div>
+            <p className='ticket'><i className='fa-solid fa-ticket'></i> 11</p>
+          
+          </div>
+       <div className="user-card">
+            <div className='info'>
+                <Etoile text='2'/>
+                <p> cocuouc</p>
+                <p>ttsagfda</p>
+            </div>
+            <p className='ticket'><i className='fa-solid fa-ticket'></i> 11</p>
+          
+          </div>
       </div>
     </div> 
     );

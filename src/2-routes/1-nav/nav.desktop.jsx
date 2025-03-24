@@ -14,16 +14,16 @@ const NavD = () => {
     const { accountOn, setAccountOn, focusElement, setFocusElement } = useContext(UserContext)
     const { setAuthMethod } = useContext(AuthenticationContext)
 
-    const [authUser, setAuthUser] = useState(null)   // Le user de l'auth (firebase auth)
-    const [userData, setUserData] = useState(null)   // Le user complet de la BDD Firestore
-    
+    const [authUser, setAuthUser] = useState(null)
+    const [userData, setUserData] = useState(null)
+    const [menuOpen, setMenuOpen] = useState(false)
+
     useAuthListener(setAuthUser)
 
-    // Dès qu'on a le user connecté, on récupère sa fiche Firestore
     useEffect(() => {
         const fetchUserData = async () => {
             if (authUser) {
-                const userInfo = await getUserById(authUser.uid)  // 🔥 Assure-toi que cette fonction récupère les infos de Firestore
+                const userInfo = await getUserById(authUser.uid)
                 setUserData(userInfo)
             } else {
                 setUserData(null)
@@ -33,45 +33,59 @@ const NavD = () => {
         fetchUserData()
     }, [authUser])
 
+    const handleMenuClick = () => {
+        setMenuOpen(false)
+    }
+
     return (
         <nav className='desktopNav'>
-            <Link to={'/'} className='logo' onClick={() => setFocusElement('home')}>INSALOON</Link>
-            <div className={`focus-animation ${focusElement}`}></div>
-            
-            <ul className='nav-items'>
+            <Link to={'/'} className='logo' onClick={() => setFocusElement('home')}>
+                INSALOON
+            </Link>
+
+            {/* Menu hamburger */}
+            <div
+                className={`burger ${menuOpen ? 'open' : ''}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <ul className={`nav-items ${menuOpen ? 'open' : ''}`}>
                 {userData && (
                     <Fragment>
-                        {/* ✅ Affiche l'onglet Admin que si admin est true */}
                         {userData.admin === true && (
-                            <li className='item' onClick={() => setFocusElement('')}>
-                                <Link to={'admin'}>Admin</Link>
+                            <li className='item' onClick={() => { setFocusElement(''); handleMenuClick() }}>
+                                <Link to={'/admin'}>Admin</Link>
                             </li>
                         )}
 
-                        <li className='item' onClick={() => setFocusElement('')}>
-                            <Link to={'defis'}>Defis</Link>
+                        <li className='item' onClick={() => { setFocusElement(''); handleMenuClick() }}>
+                            <Link to={'/defis'}>Defis</Link>
                         </li>
 
-                        <li className='item' onClick={() => setFocusElement('')}>
-                            <Link to={'classement'}>Classement</Link>
+                        <li className='item' onClick={() => { setFocusElement(''); handleMenuClick() }}>
+                            <Link to={'/classement'}>Classement</Link>
                         </li>
                     </Fragment>
                 )}
 
                 <li className='item'>
                     {authUser ? (
-                        <Link onClick={() => setAccountOn(!accountOn)}>Mon Compte</Link>
+                        <Link onClick={() => { setAccountOn(!accountOn); handleMenuClick() }}>Mon Compte</Link>
                     ) : (
                         <Link
                             to={"/authentication"}
                             className="btn"
-                            onClick={() => setAuthMethod("login")}
+                            onClick={() => { setAuthMethod("login"); handleMenuClick() }}
                         >
                             Se connecter
                         </Link>
                     )}
                 </li>
-                
+
                 <Account />
             </ul>
         </nav>
