@@ -1,5 +1,5 @@
 import { initializeApp} from 'firebase/app'
-import { getFirestore, collection, getDocs, query, addDoc} from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, addDoc, increment} from 'firebase/firestore';
 import {
   getAuth, 
   onAuthStateChanged, 
@@ -25,7 +25,7 @@ const firebaseConfig = {
   
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth()
+export const auth = getAuth()
 export const db = getFirestore(app)
 
 export const useAuthListener = (setUser) => {
@@ -36,7 +36,38 @@ export const useAuthListener = (setUser) => {
     return () => unsubscribe()
   }, [])
 }
+export const getUserById = async (userId) => {
+  try {
+      const userRef = doc(db, 'users', userId)
+      const userSnap = await getDoc(userRef)
 
+      if (userSnap.exists()) {
+          return { id: userSnap.id, ...userSnap.data() }
+      } else {
+          console.log("Aucun user trouvé avec cet ID")
+          return null
+      }
+  } catch (error) {
+      console.error("Erreur dans getUserById :", error)
+      return null
+  }
+}
+export const fetchUserById = async (userId) => {
+  try {
+    const userRef = doc(db, 'users', userId);
+    const userSnap = await getDoc(userRef);
+    
+    if (userSnap.exists()) {
+      return { id: userSnap.id, ...userSnap.data() };
+    } else {
+      console.error('Aucun utilisateur trouvé avec cet ID');
+      return null;
+    }
+  } catch (error) {
+    console.error('Erreur lors de la récupération de l\'utilisateur:', error);
+    return null;
+  }
+};
 export const fetchUsers = async () => {
     try {
       const usersCollectionRef = collection(db, 'users'); // ou 'users2' si besoin
@@ -174,14 +205,71 @@ export const resetPassword = (email) => {
     }
   })
 }
-export const addDefi = async (defi) => {
+
+export const updateUserDefisAndTickets = async (userId, nombreTickets, defisValider) => {
   try {
-    const docRef = await addDoc(collection(db, 'defis'), defi);
-    console.log('Défi ajouté avec ID : ', docRef.id);
+    const userRef = doc(db, 'users', userId);
+    await updateDoc(userRef, {
+      nombreTickets: nombreTickets,
+      defisValider: defisValider
+    });
     return true;
   } catch (error) {
-    console.error('Erreur lors de l\'ajout du défi : ', error);
+    console.error('Erreur lors de la mise à jour du user :', error);
     return false;
+  }
+};
+
+export const getDefiById = async (defiId) => {
+  try {
+    console.log(defiId);
+    
+    const defiRef = doc(db, 'defis', String(defiId));
+    console.log(defiId);
+    
+    const defiDoc = await getDoc(defiRef);
+    console.log(defiDoc);
+    
+    if (defiDoc.exists()) {
+      return defiDoc.data(); // Retourne les données du défi, y compris les points
+    } else {
+      console.error('Défi non trouvé avec cet ID');
+      return null;
+    }
+  } catch (error) {
+    console.error('Erreur lors de la récupération du défi :', error);
+    return null;
+  }
+};
+export const addDefi = async (defiData) => {
+  try {
+    const defisCollection = collection(db, 'defis');
+
+    const snapshot = await getDocs(defisCollection);
+
+    const existingIds = snapshot.docs.map(doc => parseInt(doc.id)).filter(id => !isNaN(id));
+
+    const maxId = existingIds.length > 0 ? Math.max(...existingIds) : 0;
+
+    const nextId = (maxId + 1);
+
+    const newDefi = {
+      ...defiData,
+      id : nextId,
+      nombreFini: 0
+    };
+
+    // Créer le document avec l'id choisi
+    const defiRef = doc(db, 'defis', nextId);
+
+    await setDoc(defiRef, newDefi);
+
+    console.log('Défi ajouté avec ID :', nextId);
+
+    return { id: nextId, ...newDefi };
+  } catch (error) {
+    console.error('Erreur lors de l’ajout du défi :', error);
+    return null;
   }
 };
 export const fetchDefis = async () => {
@@ -195,6 +283,18 @@ export const fetchDefis = async () => {
     return defisList
   } catch (error) {
     console.error('Erreur lors de la récupération des défis :', error);
+  }
+};
+export const incrementNombreFinisDefi = async (defiId) => {
+  try {
+    const defiRef = doc(db, 'defis', String(defiId));
+    await updateDoc(defiRef, {
+      nombreFini: increment(1)
+    });
+    return true;
+  } catch (error) {
+    console.error('Erreur lors de l\'incrémentation de nombreFinis du défi :', error);
+    return false;
   }
 };
 export const emailInUse = async (test_email) => {

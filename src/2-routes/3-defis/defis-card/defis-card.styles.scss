@@ -19,7 +19,7 @@
     &:hover {
       transform: scale(1.05);
     }
-    &.valider:first-child {
+    &.valider {
         filter: grayscale(100%);
         opacity: 0.6;
         position: relative;

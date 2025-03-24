@@ -5,7 +5,43 @@
         max-width: 600px;
         margin: 10vw auto;
       }
+      .defis-sidebar {
+        position: absolute;
+        left: 2vw;
+        width: 20vw;
+        background-color: #f4f4f4;
+        padding: 1vw;
+        border-right: 1px solid #ccc;
       
+        h2 {
+          margin-bottom: 15px;
+        }
+      
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+      
+        .defi-item {
+          br 
+          {
+            display: block;
+          }
+          display: flex; 
+          flex-wrap: wrap;
+          margin-bottom: 15px;
+          padding: 10px;
+          background-color: #fff8dc;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          .id 
+          {
+            width: 100%;
+            margin-bottom: 0.5vw;
+          }
+       
+        }
+      }
       .search-input {
         padding: 10px;
         width: 100%;
