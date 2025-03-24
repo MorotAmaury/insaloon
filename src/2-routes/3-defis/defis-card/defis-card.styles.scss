@@ -40,7 +40,11 @@
         margin-top: 1vw;
         height: 5vw;
         text-align: center;
-        
+        @media (max-width: 760px) {
+          min-height: 5vw;
+          height: auto !important;
+          // background-color: blue;  
+      }
         h2 {
             font-size: 1.3vw;
             color: #8b0000;
