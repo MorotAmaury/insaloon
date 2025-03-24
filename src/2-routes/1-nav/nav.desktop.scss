@@ -159,11 +159,19 @@
                 margin-top: 60vw;
             }
             margin-left: 0;
-            font-size: 4vw;
+            font-size: 5vw;
 
             a {
                 color: white;
             }
+        }
+        .btn 
+        {
+            position: relative;
+            top: 30vw;
+            border-radius: 3vw;
+            padding: 3vw !important;
+            font-size: 6vw !important;
         }
     }
 }

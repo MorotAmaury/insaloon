@@ -74,7 +74,7 @@ const NavD = () => {
 
                 <li className='item'>
                     {authUser ? (
-                        <Link onClick={() => { setAccountOn(!accountOn); handleMenuClick() }}>Mon Compte</Link>
+                        <Link onClick={() => { setAccountOn(!accountOn) }}>Mon Compte</Link>
                     ) : (
                         <Link
                             to={"/authentication"}

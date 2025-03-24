@@ -1,98 +1,134 @@
 @import '../../2-routes/0-app/variables.scss';
 
-.hidden 
-{
-    top:-400% !important;
+.hidden {
+    top: -400% !important;
 }
-.account-container 
-{
-    z-index: 10000;
 
+.account-container {
+    z-index: 10000;
     position: absolute;
     right: 0;
     top: 120%;
-
+    
     width: 25vw;
     height: 10.5vw;
     border-radius: 2vw;
-
     background-color: $black !important;
     color: black;
     transition: all ease 0.3s;
-    .cross 
-    {
+
+    .cross {
         cursor: pointer;
         position: absolute;
         right: 5%;
         top: 4.2%;
-        i 
-        {
+        i {
             font-size: 1.5vw;
         }
     }
-    .email 
-    {
-        margin: 1vw 0 1vw 0;
 
+    .email {
+        margin: 1vw 0 1vw 0;
         text-align: center;
         font-size: 0.8vw;
     }
-    .welcome 
-    {
+
+    .welcome {
         margin-top: 2vw;
     }
-    .credits
-    {
+
+    .credits {
         margin-top: 0.5vw;
-        
         font-size: 1vw;
     }
-   
-    .logout-btn 
-    {
+
+    .logout-btn {
         margin: 0.75vw 0 0.25vw;
         padding: 0.5vw 1.5vw;
-
         width: 16vw;
         border-radius: 2vw;
         border: 0;
-        
         color: white;
-        background-color: $secondary; 
+        background-color: $secondary;
         transition: all ease 0.3s;
-        &:hover
-        {
+
+        &:hover {
             transform: translateY(-10%);
         }
     }
+
     transition: transform 0.5s ease, top 0.5s ease, right 0.5s ease, width 0.5s ease, height 0.5s ease;
 
+    // Responsive for Mobile
+    @media (max-width: 768px) {
+        position: fixed; /* Fix the account container to the top of the screen */
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        z-index: 10000;
+
+        .cross {
+            position: absolute;
+            right: 5%;
+            top: 4%;
+            i {
+                font-size: 2.5rem; /* Bigger icon for mobile */
+            }
+        }
+
+        .account-container-minimised {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100%; /* Full height on mobile */
+        }
+
+        .email {
+            margin-top: 100%;
+            font-size: 1rem; /* Adjust font size for mobile */
+        }
+
+        .welcome {
+            margin-top: 50vw;
+            font-size: 2rem;
+        }
+
+        .credits {
+            font-size: 1.2rem;
+        }
+
+        .logout-btn {
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            width: 80%; /* Full width button on mobile */
+            font-size: 1.5rem;
+        }
+    }
+
+    // Optionally add animations for mobile
+    @keyframes apparition {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 }
-.account-container-minimised 
-{
+
+.account-container-minimised {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-
-
-.account-container.minimised 
-{
+.account-container.minimised {
     animation: minimise 0.5s ease forwards;
 }
 
-.hide 
-{
+.hide {
     display: none;
-}
-
-
-@keyframes apparition {
-    from {
-        opacity: 0;
-    } 
-    to {
-        opacity: 1;
-    }
 }
