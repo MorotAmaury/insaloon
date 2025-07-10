@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllFamilles } from "../../4-utils/firebase.utils";
-
+import './classementPage.styles.scss';
 export default function ClassementPage() {
   const [classement, setClassement] = useState([]);
 
@@ -18,7 +18,7 @@ export default function ClassementPage() {
   }, []);
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="classement-container">
       <h2 className="text-2xl font-bold mb-4">Classement des familles 🏆</h2>
       <ul className="space-y-2">
         {classement.map((famille, index) => (

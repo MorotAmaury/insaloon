@@ -20,6 +20,7 @@ const NavD = () => {
                 <li className='item'><Link to={'/defis'}>Defis</Link></li>
                 <li className='item'><Link to={'/classement'}>Classement</Link></li>
                 <li className='item'><Link to={'/admin'}>admins</Link></li>
+                <li className='item'><Link to={'/submission'}><button className='btn'>Soumettre defis</button></Link></li>
             </ul>
            
 

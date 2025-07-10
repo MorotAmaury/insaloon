@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   getPendingSubmissions,
   approveSubmission,
@@ -45,13 +45,14 @@ export default function AdminValidationPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6"> 
-      <div className="addForm-container">
-            <AddDefiForm/>
-            <AddFamilleForm/>
-      </div>
+    <Fragment>
+    <div className="addForm-container">
+          <AddDefiForm/>
+          <AddFamilleForm/>
+    </div>
+    <div className="submission-container"> 
 
-      <h1 className="text-2xl font-bold mb-4">Validation des soumissions</h1>
+      <h1 className="submission-title">Validation des soumissions</h1>
 
       {submissions.length === 0 && <p>Aucune soumission en attente.</p>}
 
@@ -102,5 +103,7 @@ export default function AdminValidationPage() {
         </div>
       ))}
     </div>
+    </Fragment>
+
   );
 }

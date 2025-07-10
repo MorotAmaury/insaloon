@@ -6,6 +6,8 @@ import Home from '../2-home/home.component';
 import Admin from '../5-admin/admin.component.jsx';
 import PageDefis from '../3-defis/pageDefis.component.jsx';
 import ClassementPage from '../4-classement/classementPage.component.jsx';
+import SubmitDefiForm from '../3-defis/submitDefisForm.component.jsx';
+import SubmissionPage from '../4-SubPage/submissionPage.component.jsx';
 function App() {
 
   return (
@@ -15,6 +17,7 @@ function App() {
     <Route path='defis' element={<PageDefis/>}/>
     <Route path='admin' element={<Admin/>}/>
     <Route path='classement' element={<ClassementPage/>}/>
+    <Route path='submission' element={<SubmissionPage/>}/>
     </Route>
  </Routes>
 
