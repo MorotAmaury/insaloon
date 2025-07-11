@@ -26,10 +26,10 @@ const Home = () => {
       setTimeLeft({ days, hours, minutes, seconds });
     };
 
-    // const interval = setInterval(updateCountdown, 1000);
-    // updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    // return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -49,15 +49,15 @@ En envoyant des preuves de tes réalisations, tu feras gagner des points à ta f
       <div className="decompte-container">
         {timeLeft ? (
           <div className="decompte">
-            <span className="decompte-part">{timeLeft.days}50j</span> : <span className="decompte-part">{timeLeft.hours}8h</span> 
-            : <span className="decompte-part">{timeLeft.minutes}41m </span>: <span className="decompte-part">{timeLeft.seconds}3s</span>
+            <span className="decompte-part">{timeLeft.days}j</span> : <span className="decompte-part">{timeLeft.hours}h</span> 
+            : <span className="decompte-part">{timeLeft.minutes}m </span>: <span className="decompte-part">{timeLeft.seconds}s</span>
           </div>
         ) : (
           <div className="text-green-600 text-xl font-semibold">C'est le jour J ! 🎉</div>
         )}
       </div>
 
-      {/* <footer className="mt-auto py-6 border-t w-full flex justify-center gap-10 bg-white">
+      <footer className="footer">
         <a
           href="https://instagram.com/_insaloon_"
           target="_blank"
@@ -74,7 +74,7 @@ En envoyant des preuves de tes réalisations, tu feras gagner des points à ta f
         >
           <FaInstagram className="text-xl" /> Bde Insa-Rouen
         </a>
-      </footer> */}
+      </footer>
     </div>
   );
 };

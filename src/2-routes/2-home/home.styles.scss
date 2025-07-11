@@ -3,7 +3,7 @@
 .title-description 
 {
     max-width: 65%;
-    margin:3vw 0 5vw;
+    margin:0 0 3.5vw;
     font-size: 1.1vw;
     line-height: 2vw;
     padding: 2.5vw 2vw;
@@ -25,4 +25,14 @@
 .decompte-part 
 {
     margin: 0 2vw;
+}
+.footer 
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5vw; 
+    a 
+    {
+        margin-left: 2vw;
+    }
 }

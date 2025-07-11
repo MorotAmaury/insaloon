@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { verifyAdminCredentials } from "../../4-utils/firebase.utils";
 import { useNavigate } from "react-router-dom";
 
@@ -21,8 +21,9 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h2 className="text-2xl font-bold mb-4">Connexion admin</h2>
+    <Fragment>
+    <h2 className="title">Connexion admin</h2>
+    <div className="flex flex-col items-center justify-center  p-4">
       <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-sm">
         <input
           type="text"
@@ -44,5 +45,7 @@ export default function AdminLogin() {
         </button>
       </form>
     </div>
+        </Fragment>
+
   );
 }

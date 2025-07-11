@@ -13,6 +13,9 @@ export default function AdminPage() {
   }, [navigate]);
 
   return (
-    <AdminValidationPage/>
+    <div>
+        <div className="title">Admin</div>
+        <AdminValidationPage/>
+    </div>
   )
 }
