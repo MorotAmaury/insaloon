@@ -27,7 +27,7 @@ export default function AddFamilleForm() {
 
   return (
     <div className="addDefi-container">
-      <h2 className="title">Ajouter une famille</h2>
+      <h2 className="subtitle">Ajouter une famille</h2>
 
       <form onSubmit={handleSubmit} >
         <div>

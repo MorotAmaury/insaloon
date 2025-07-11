@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom'
 import logo from '../../logo.png'
 const NavD = () => {
 
-
- 
+    const role = localStorage.getItem("adminRole");
 
     return (
         <nav className='desktopNav'>
@@ -17,9 +16,10 @@ const NavD = () => {
             </Link>
 
             <ul className='nav-items'>
+                <li className='item'><Link to={'/evenement'}>Evenement</Link></li>
                 <li className='item'><Link to={'/defis'}>Defis</Link></li>
                 <li className='item'><Link to={'/classement'}>Classement</Link></li>
-                <li className='item'><Link to={'/admin'}>admins</Link></li>
+                { role && <li className='item'><Link to={'/admin'}>admins</Link></li>}
                 <li className='item'><Link to={'/submission'}><button className='btn'>Soumettre defis</button></Link></li>
             </ul>
            

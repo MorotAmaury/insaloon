@@ -36,8 +36,11 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 
-export async function addDefi({ titre, description, points }) {
+export async function addDefi({ selectedCategorie, titre, description, points }) {
+  console.log("Adding defi:",selectedCategorie, titre, description, points);
+  
   await addDoc(collection(db, "defis"), {
+    categorie : selectedCategorie,
     nom: titre,
     description,
     points: Number(points),
@@ -56,12 +59,13 @@ export async function getAllDefis() {
 }
 
 // 📝 Ajouter une soumission
-export async function submitDefiProof({ defiId, videoUrl, comment, famille }) {
+export async function submitDefiProof({ defiId, videoUrl, comment, famille, visibleFor }) {
   return await addDoc(collection(db, "soumissions"), {
     defiId,
     videoUrl,
     comment,
     famille,
+    visibleFor : visibleFor || 'any', 
     status: "pending",
     timestamp: Timestamp.now(),
   });
@@ -138,3 +142,79 @@ export async function getAllFamilles() {
   const famSnap = await getDocs(collection(db, "familles"));
   return famSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+
+export const getSoumissionsByFamille = async (familleNom) => {
+  const q = query(collection(db, "soumissions"), where("famille", "==", familleNom));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+export const getDefiById = async (id) => {
+  const docRef = doc(db, "defis", id);
+  const snapshot = await getDoc(docRef);
+  if (snapshot.exists()) {
+    return { id: snapshot.id, ...snapshot.data() };
+  } else {
+    return null;
+  }
+};
+// Ajouter une nouvelle catégorie
+export const addCategorie = async (nom) => {
+  const ref = collection(db, 'categories');
+  await addDoc(ref, { nom, visible: true });
+};
+export const getAllCategories = async () => {
+  const ref = collection(db, 'categories');
+  const snapshot = await getDocs(ref);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+export const getVisibleCategories = async () => {
+  const ref = collection(db, 'categories');
+  const q = query(ref, where('visible', '==', true));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+export const toggleCategorieVisibility = async (id, currentVisible) => {
+  const ref = doc(db, 'categories', id);
+  await updateDoc(ref, { visible: !currentVisible });
+};
+
+export const getDefisByCategorieVisible = async () => {
+  const catSnapshot = await getDocs(query(collection(db, 'categories'), where('visible', '==', true)));
+  const categories = catSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+  const defisSnapshot = await getDocs(collection(db, 'defis'));
+  const defis = defisSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+  const grouped = categories.map(cat => ({
+    categorie: cat.nom,
+    defis: defis.filter(d => d.categorie === cat.nom)
+  }));
+
+  return grouped;
+};
+
+
+export const isDefiNameTaken = async (nom) => {
+  const defisRef = collection(db, "defis");
+  const q = query(defisRef, where("nom", "==", nom));
+  const querySnapshot = await getDocs(q);
+  return !querySnapshot.empty; // true si déjà existant
+};
+
+export const verifyAdminCredentials = async (identifiant, motDePasse) => {
+  const roles = ["respo_fille", "respo_garcon"];
+
+  for (const role of roles) {
+    const docRef = doc(db, "adminAccess", role);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      if (data.identifiant === identifiant && data.motDePasse === motDePasse) {
+        return role; // retourne le rôle correspondant
+      }
+    }
+  }
+
+  return null;
+};

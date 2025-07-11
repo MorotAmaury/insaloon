@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAllFamilles } from "../../4-utils/firebase.utils";
 import './classementPage.styles.scss';
+import { useNavigate } from "react-router-dom";
+
 export default function ClassementPage() {
   const [classement, setClassement] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchClassement = async () => {
@@ -17,12 +20,20 @@ export default function ClassementPage() {
     fetchClassement();
   }, []);
 
+  const handleClick = (familleNom) => {
+    navigate(`/famille/${encodeURIComponent(familleNom)}`);
+  };
+
   return (
-    <div className="classement-container">
-      <h2 className="text-2xl font-bold mb-4">Classement des familles 🏆</h2>
-      <ul className="space-y-2">
+    <div className="">
+      <h2 className="title">Classement des familles</h2>
+      <ul className="classement-container">
         {classement.map((famille, index) => (
-          <li key={famille.nom} className="p-4 border rounded bg-white shadow">
+          <li
+            key={famille.nom}
+            className="element p-4 border rounded bg-white shadow hover:bg-gray-100 cursor-pointer"
+            onClick={() => handleClick(famille.nom)}
+          >
             <span className="font-bold text-lg">{index + 1}. {famille.nom}</span>
             <span className="float-right text-green-600 font-semibold">{famille.points} pts</span>
           </li>

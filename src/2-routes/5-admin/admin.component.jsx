@@ -4,20 +4,29 @@ import {
   approveSubmission,
   refuseSubmission,
   getDefis,
+  
 } from "../../4-utils/firebase.utils";
 import AddDefiForm from "../3-defis/addDefis.component";
 import './admin.styles.scss';
 import AddFamilleForm from "../3-defis/addFamille.component";
+import CategoryManager from "./categoryManager.component";
 
 export default function AdminValidationPage() {
   const [submissions, setSubmissions] = useState([]);
   const [defis, setDefis] = useState([]);
   const [reason, setReason] = useState({}); // id soumission => raison
-
+  const role = localStorage.getItem("adminRole");
+  console.log(role);
+  
   useEffect(() => {
     async function fetchData() {
       const subs = await getPendingSubmissions();
-      setSubmissions(subs);
+      const filteredSubs = subs.filter((proof) => {
+        return (
+          proof.visibleFor === "any" || proof.visibleFor === role
+        );
+      });
+      setSubmissions(filteredSubs);
 
       const defs = await getDefis();
       setDefis(defs);
@@ -34,7 +43,9 @@ export default function AdminValidationPage() {
     await approveSubmission(id, defi.points);
     setSubmissions((subs) => subs.filter((s) => s.id !== id));
   };
-
+  const defiIdtoName = (defiId) => {
+    return defis.find((d) => d.id === defiId)?.nom || "Défi inconnu";
+  }
   const handleRefuse = async (id) => {
     if (!reason[id] || reason[id].trim() === "") {
       alert("Merci de saisir une raison du refus.");
@@ -50,6 +61,9 @@ export default function AdminValidationPage() {
           <AddDefiForm/>
           <AddFamilleForm/>
     </div>
+    <div className="category-manager">
+      <CategoryManager />
+    </div>
     <div className="submission-container"> 
 
       <h1 className="submission-title">Validation des soumissions</h1>
@@ -62,7 +76,7 @@ export default function AdminValidationPage() {
             <strong>Famille :</strong> {sub.famille}
           </p>
           <p>
-            <strong>Défi ID :</strong> {sub.defiId}
+            <strong>Défi :</strong> {defiIdtoName(sub.defiId)}
           </p>
           <p>
             <strong>Commentaire :</strong> {sub.comment || "-"}
