@@ -13,8 +13,10 @@ import AdminPage from '../5-admin/adminPage.component.jsx';
 import Evenements from '../6-event/evenement.component.jsx';
 function App() {
 
-  console.log(import.meta.env.VITE_TEST_URL)
-  
+if (!import.meta.env.VITE_TEST_URL) {
+  console.warn("⚠️ VITE_TEST_URL n'est pas défini !");
+}
+console.log(import.meta.env.VITE_TEST_URL);  
   return (
     <Routes>
     <Route path='/' element={<Nav/>}>
