@@ -1,7 +1,86 @@
-.submissionPage-container {
-    width: 60vw;
-    margin: 0 auto;
-    border-radius: 5vw;
-    
-    background-color: #f9f9f9;
+@import '../0-app/variables.scss';
+
+.submit-defi-form {
+  background: #fdf7e3;
+  border: 2px solid #d4b483;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 60%;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: 10vw auto 0 ;
+  font-family: 'Poppins', sans-serif;
+  color: #4b2e14;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+
+  .title 
+  {
+    margin-top: 1vw;
+    font-size: 2vw;
+    border-bottom: 2px dashed #d4b483;
+    padding-bottom: 1vw;
+  }
+
+
+  .form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    > div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  input, select, textarea {
+    border: 1px solid #c6a972;
+    border-radius: 6px;
+    padding: 0.5rem;
+    background: #fffaf0;
+    font-size: 0.95rem;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  button {
+    background: $secondary;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      background: darken($secondary, 10%);
+    }
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+
+    .disclaimer {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #7a5c3a;
+      text-align: center;
+    }
+  }
 }

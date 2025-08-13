@@ -23,7 +23,7 @@ export default function AdminLogin() {
   return (
     <Fragment>
     <h2 className="title">Connexion admin</h2>
-    <div className="flex flex-col items-center justify-center  p-4">
+    <div className="flex flex-col items-center justify-center p-4">
       <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-sm">
         <input
           type="text"

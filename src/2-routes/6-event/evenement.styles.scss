@@ -1,43 +1,69 @@
-.evenements-container {
-//   padding: 2rem;
-  margin: auto;
+@import '../0-app/variables.scss';
 
-    
+.evenements-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: center;
+
+ 
+
   .events-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    width: 90%;
-    margin: 4vw auto;
+    justify-items: center;
   }
 
   .event-block {
+    background: #d9c29c;
+    border-radius: 18px;
+ 
     width: 100%;
-    max-width: 80%;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background-color: #fef3c7; // jaune pâle
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 320px;
+    padding: 2rem 1.8rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
 
-    .event-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    .event-desc {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      color: #333;
+    &:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow:
+        0 14px 20px rgba(101, 56, 10, 0.5),
+        inset 0 0 12px rgba(220, 190, 140, 0.7);
     }
 
     &.left {
-      align-self: flex-start;
-      border-left: 4px solid #facc15;
+      background: linear-gradient(135deg, #e1d3b0, #a16327); /* plus clair sable rouille */
+          background: $important;
+
     }
 
     &.right {
-      align-self: flex-end;
-      border-right: 4px solid #facc15;
+      background: $secondary; /* plus sombre marron foncé */
+    }
+
+    .event-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      margin-bottom: 1.3rem;
+      color: whitesmoke; /* marron foncé */
+      // text-shadow: 1px 1px 1px #d9c49f; /* doré sable clair */
+    }
+
+    .event-desc {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      color: wheat; /* marron chaud */
+      font-style: italic;
+      max-width: 280px;
     }
   }
 }

@@ -11,7 +11,24 @@ import DetailFamillePage from '../4-classement/DetailFamillePage.jsx';
 import AdminLogin from '../5-admin/adminLogin.component.jsx';
 import AdminPage from '../5-admin/adminPage.component.jsx';
 import Evenements from '../6-event/evenement.component.jsx';
+
+
+function MobileWarning() {
+  return (
+    <div style={{ textAlign: "center", padding: "2rem" }}>
+      <h1>Pas encore disponible sur telephone</h1>
+      <p>Merci d'utiliser un ordinateur pour accéder à ce site.</p>
+    </div>
+  );
+}
+function isMobile() {
+  return window.innerWidth < 768; // seuil pour mobile
+}
+
 function App() {
+  if (isMobile()) {
+    return <MobileWarning />;
+  }
 
   return (
     <Routes>

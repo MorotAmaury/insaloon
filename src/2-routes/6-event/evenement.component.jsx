@@ -3,37 +3,30 @@ import './evenement.styles.scss';
 const evenements = [
   {
     nom: "S0",
-    description: "Une semaine zéro pour découvrir l’INSA, se repérer sur le campus et faire connaissance avant la rentrée officielle."
+    description: "Le premier événement de l’intégration, où tu pourras découvrir pour la première fois tes futurs amis et camarades de promotion !"
   },
   {
     nom: "Integr'INSA",
-    description: "Le grand jeu d’intégration ! Un enchaînement d’épreuves loufoques pour souder ta promo et représenter ta famille."
+    description: "Lors de cet événement, tu seras en compétition avec les autres classes, avec pour objectif de décrocher le titre de meilleure promotion."
   },
   {
     nom: "TMS",
-    description: "Tournoi Multi-Sport réunissant toutes les familles pour une compétition bon enfant sur les terrains du campus."
+    description: "Tournoi Multi-Sport qui se déroule lors d’un après-midi au stade, une occasion parfaite pour rencontrer de nouvelles personnes à travers des activités originales et sportives."
   },
   {
     nom: "Outside",
-    description: "Une journée en plein air avec des activités chill ou sportives selon ton mood. Soleil, fun et musique au programme."
+    description: "Un événement en plein centre-ville de Rouen qui dure tout l’après-midi, où ton équipe affrontera d’autres groupes dans des duels épiques !"
   },
   {
     nom: "Barathon",
-    description: "Une tournée mythique des bars de la ville dans une ambiance festive, déguisée et inoubliable."
-  },
-  {
-    nom: "Melting Pote",
-    description: "Une soirée culturelle et culinaire pour découvrir les origines et spécialités de tous les étudiants de l’INSA."
-  },
-  {
-    nom: "Soiree Boite",
-    description: "La grosse soirée en boîte organisée rien que pour vous, ambiance garantie jusqu’au bout de la nuit."
+    description: "Une tournée des bars de Rouen, l’occasion idéale pour découvrir les lieux incontournables, s’amuser et surtout rencontrer du monde !"
   },
   {
     nom: "WEI",
-    description: "Le Week-End d’Intégration : deux jours hors du temps avec toute la promo pour des souvenirs à vie."
+    description: "Le Week-End d’Intégration : deux jours hors du temps avec toute la promo pour créer des souvenirs inoubliables."
   }
 ];
+
 
 export default function Evenements() {
   return (

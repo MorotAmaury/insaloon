@@ -1,9 +1,168 @@
-.classement-container 
-{
-    margin: 3vw auto;
-    width: 70vw;
+@import '../0-app/variables.scss';
+
+// Couleurs
+$primary-color: $secondary; // bleu
+$accent-color: $important;  // jaune
+
+$gold: #ffd700;
+$silver: #c0c0c0;
+$bronze: #cd7f32;
+
+.classement-page {
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: $important;
+
+
+  /* Podium */
+  .podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .podium-box {
+    background: white;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem 0;
+    transition: transform 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .box-rank {
+      font-size: 1.8rem;
+      font-weight: bold;
+      position: absolute;
+      top: -2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .box-name {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .box-points {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: $primary-color;
+    }
+  }
+
+  /* Hauteurs + couleurs podium */
+  .place-1 {
+    height: 22vw;
+    order: 2;
+    width: 22vw;
+    font-size: 3vw;
+    text-align: center;
+    background: linear-gradient(135deg, $gold, lighten($gold, 15%));
+    .box-rank {
+      font-size: 2rem;
+      width: 55px;
+      height: 55px;
+    }
+  }
+  .place-2 {
+    order: 1;
+    height: 15vw;
+    width: 17vw;
+    font-size: 2.2vw;
+    background: linear-gradient(135deg, $silver, lighten($silver, 15%));
+  }
+  .place-3 {
+    order: 3;
+    height: 12vw;
+    width: 17vw;
+    background: linear-gradient(135deg, $bronze, lighten($bronze, 15%));
+    font-size: 1.5vw;
+ 
+  }
+
+  /* Liste des autres */
+  .classement-container {
+    list-style: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .classement-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .rank {
+      font-size: 1.2rem;
+      font-weight: bold;
+      width: 2.5rem;
+      text-align: center;
+      color: $accent-color;
+    }
+
+    .name {
+      flex-grow: 1;
+      font-size: 1rem;
+      font-weight: 500;
+      padding-left: 0.5rem;
+    }
+
+    .points {
+      font-weight: bold;
+      color: $primary-color;
+    }
+  }
 }
-.element 
-{
-    margin-bottom: 1vw;
+
+/* Page "aucune famille" */
+.no-familles {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+
+  p {
+    color: $important;
+    max-width: 400px;
+  }
 }
