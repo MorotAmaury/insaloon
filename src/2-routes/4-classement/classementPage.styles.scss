@@ -13,7 +13,6 @@ $bronze: #cd7f32;
   font-family: 'Poppins', sans-serif;
   color: $important;
 
-
   /* Podium */
   .podium {
     display: flex;
@@ -34,6 +33,7 @@ $bronze: #cd7f32;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
     &:hover {
       transform: translateY(-5px);
     }
@@ -95,7 +95,6 @@ $bronze: #cd7f32;
     width: 17vw;
     background: linear-gradient(135deg, $bronze, lighten($bronze, 15%));
     font-size: 1.5vw;
- 
   }
 
   /* Liste des autres */
@@ -142,6 +141,80 @@ $bronze: #cd7f32;
       color: $primary-color;
     }
   }
+
+  /* 🔹 Responsive Design */
+  @media (max-width: 1024px) {
+    .place-1 { height: 26vw; width: 26vw; font-size: 2.5vw; }
+    .place-2, .place-3 { width: 20vw; font-size: 2vw; }
+    .podium-box .box-rank { font-size: 1.6rem; width: 45px; height: 45px; }
+  }
+
+  @media (max-width: 768px) {
+    .podium {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .place-1, .place-2, .place-3 {
+      width: 80%;
+      height: auto;
+      font-size: 1.2rem;
+      padding: 2rem 0.5rem;
+    }
+
+    .podium-box .box-rank {
+      font-size: 1.4rem;
+      width: 40px;
+      height: 40px;
+      top: -1.8rem;
+    }
+
+    .classement-item {
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+
+      .rank { font-size: 1rem; width: 2rem; }
+      .name { font-size: 0.9rem; }
+      .points { font-size: 0.9rem; }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .podium {
+      gap: 1rem;
+    }
+
+    .place-1, .place-2, .place-3 {
+      width: 100%;
+      padding: 1.5rem 0.5rem;
+      font-size: 1rem;
+    }
+
+    .podium-box .box-rank {
+      font-size: 1.2rem;
+      width: 35px;
+      height: 35px;
+    }
+
+    .classement-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+
+      .rank {
+        width: auto;
+        font-size: 1rem;
+      }
+      .name {
+        font-size: 0.9rem;
+        padding-left: 0;
+      }
+      .points {
+        font-size: 0.85rem;
+      }
+    }
+  }
 }
 
 /* Page "aucune famille" */
@@ -164,5 +237,10 @@ $bronze: #cd7f32;
   p {
     color: $important;
     max-width: 400px;
+  }
+
+  @media (max-width: 480px) {
+    h2 { font-size: 1.4rem; }
+    p { font-size: 0.9rem; }
   }
 }

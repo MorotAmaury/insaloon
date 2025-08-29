@@ -8,8 +8,6 @@
   color: white;
   text-align: center;
 
- 
-
   .events-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -20,7 +18,6 @@
   .event-block {
     background: #d9c29c;
     border-radius: 18px;
- 
     width: 100%;
     max-width: 320px;
     padding: 2rem 1.8rem;
@@ -41,29 +38,91 @@
     }
 
     &.left {
-      background: linear-gradient(135deg, #e1d3b0, #a16327); /* plus clair sable rouille */
-          background: $important;
-
+      background: $important; 
     }
 
     &.right {
-      background: $secondary; /* plus sombre marron foncé */
+      background: $secondary; 
     }
 
     .event-title {
       font-size: 2.1rem;
       font-weight: 900;
       margin-bottom: 1.3rem;
-      color: whitesmoke; /* marron foncé */
-      // text-shadow: 1px 1px 1px #d9c49f; /* doré sable clair */
+      color: whitesmoke;
     }
 
     .event-desc {
       font-size: 1.1rem;
       line-height: 1.4;
-      color: wheat; /* marron chaud */
+      color: wheat;
       font-style: italic;
       max-width: 280px;
+    }
+  }
+}
+
+/* --- Responsive --- */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .evenements-container {
+    .events-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .event-block {
+      padding: 1.6rem 1.4rem;
+      .event-title {
+        font-size: 1.8rem;
+      }
+      .event-desc {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .evenements-container {
+    padding: 0 0.8rem;
+
+    .events-list {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .event-block {
+      max-width: 100%;
+      padding: 1.4rem 1rem;
+
+      .event-title {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+      }
+      .event-desc {
+        font-size: 0.95rem;
+        line-height: 1.3;
+      }
+    }
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+  .evenements-container {
+    .event-block {
+      border-radius: 14px;
+      padding: 1.2rem 0.9rem;
+
+      .event-title {
+        font-size: 1.4rem;
+      }
+      .event-desc {
+        font-size: 0.9rem;
+      }
     }
   }
 }

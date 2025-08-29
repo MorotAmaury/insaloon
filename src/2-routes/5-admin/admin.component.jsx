@@ -7,6 +7,7 @@ import {
   
 } from "../../4-utils/firebase.utils";
 import AddDefiForm from "../3-defis/addDefis.component";
+import EditDefiForm from "../3-defis/editDefis.component";
 import './admin.styles.scss';
 import AddFamilleForm from "../3-defis/addFamille.component";
 import CategoryManager from "./categoryManager.component";
@@ -60,6 +61,7 @@ export default function AdminValidationPage() {
     <div className="addForm-container">
           <AddDefiForm/>
           <AddFamilleForm/>
+          <EditDefiForm/> 
     </div>
     <div className="category-manager">
       <CategoryManager />

@@ -157,6 +157,14 @@ export const getDefiById = async (id) => {
     return null;
   }
 };
+export const updateDefi = async (id, { nom, description, points }) => {
+  const defiRef = doc(db, "defis", id);
+  await updateDoc(defiRef, {
+    nom,
+    description,
+    points: Number(points),
+  });
+};
 // Ajouter une nouvelle catégorie
 export const addCategorie = async (nom) => {
   const ref = collection(db, 'categories');
