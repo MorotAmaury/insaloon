@@ -13,22 +13,22 @@ import AdminPage from '../5-admin/adminPage.component.jsx';
 import Evenements from '../6-event/evenement.component.jsx';
 
 
-function MobileWarning() {
-  return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>Pas encore disponible sur telephone</h1>
-      <p>Merci d'utiliser un ordinateur pour accéder à ce site.</p>
-    </div>
-  );
-}
+// function MobileWarning() {
+//   return (
+//     <div style={{ textAlign: "center", padding: "2rem" }}>
+//       <h1>Pas encore disponible sur telephone</h1>
+//       <p>Merci d'utiliser un ordinateur pour accéder à ce site.</p>
+//     </div>
+//   );
+// }
 function isMobile() {
   return window.innerWidth < 768; // seuil pour mobile
 }
 
 function App() {
-  if (isMobile()) {
-    return <MobileWarning />;
-  }
+  // if (isMobile()) {
+  //   return <MobileWarning />;
+  // }
 
   return (
     <Routes>
