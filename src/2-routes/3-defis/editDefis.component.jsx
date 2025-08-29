@@ -8,7 +8,6 @@ export default function EditDefiForm() {
     nom: "",
     description: "",
     points: 0,
-    categorie: "",
   });
 
   // Charger les défis
@@ -29,7 +28,6 @@ export default function EditDefiForm() {
         nom: defi.nom || "",
         description: defi.description || "",
         points: defi.points || 0,
-        categorie: defi.categorie || "",
       });
     }
   }, [selectedDefiId, defis]);

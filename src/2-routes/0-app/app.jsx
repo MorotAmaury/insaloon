@@ -26,9 +26,6 @@ function isMobile() {
 }
 
 function App() {
-  // if (isMobile()) {
-  //   return <MobileWarning />;
-  // }
 
   return (
     <Routes>

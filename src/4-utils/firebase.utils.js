@@ -46,9 +46,10 @@ export async function addDefi({ selectedCategorie, titre, description, points })
     points: Number(points),
   });
 }
-export async function addFamille({ nom }) {
+export async function addFamille({ nom, nbPersonnes }) {
   await addDoc(collection(db, "familles"), {
     nom: nom,
+    nbPersonnes: nbPersonnes ?? 0, // par défaut 0 si non renseigné
     points: 0,
   });
 }
