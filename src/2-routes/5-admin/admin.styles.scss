@@ -21,6 +21,11 @@
 }
 .category-manager 
 {
-    width: 20vw ;
+    display: flex;
+    width: 70vw ;
+    gap: 10vw;
+    justify-content: center;
+    align-items: flex-start;
     margin: 0 auto;
+
 }

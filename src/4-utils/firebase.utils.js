@@ -58,7 +58,26 @@ export async function getAllDefis() {
   const snapshot = await getDocs(collection(db, "defis"));
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
+// 📥 Récupérer toutes les familles
+export async function getFamilles() {
+  const snapshot = await getDocs(collection(db, "familles"));
+  return snapshot.docs.map((docSnap) => ({
+    id: docSnap.id,
+    ...docSnap.data(),
+  }));
+}
 
+// ✏️ Mettre à jour une famille
+export async function updateFamille(id, { nom, nbPersonnes, points }) {
+  const familleRef = doc(db, "familles", id);
+
+  const updateData = {};
+  if (nom !== undefined) updateData.nom = nom;
+  if (nbPersonnes !== undefined) updateData.nbPersonnes = nbPersonnes;
+  if (points !== undefined) updateData.points = points;
+
+  await updateDoc(familleRef, updateData);
+}
 // 📝 Ajouter une soumission
 export async function submitDefiProof({ defiId, videoUrl, comment, famille, visibleFor }) {
   return await addDoc(collection(db, "soumissions"), {
@@ -130,11 +149,7 @@ export async function getPendingSubmissions() {
     .map((doc) => ({ id: doc.id, ...doc.data() }))
     .filter((s) => s.status === "pending");
 }
-// Récupérer toutes les familles avec points
-export async function getFamilles() {
-  const famillesSnap = await getDocs(collection(db, "familles"));
-  return famillesSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-}
+
 export async function getDefis() {
   const defsSnap = await getDocs(collection(db, "defis"));
   return defsSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));

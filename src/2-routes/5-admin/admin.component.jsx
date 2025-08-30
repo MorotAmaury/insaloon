@@ -11,6 +11,7 @@ import EditDefiForm from "../3-defis/editDefis.component";
 import './admin.styles.scss';
 import AddFamilleForm from "../3-defis/addFamille.component";
 import CategoryManager from "./categoryManager.component";
+import EditFamilleForm from "../3-defis/editFamille.component";
 
 export default function AdminValidationPage() {
   const [submissions, setSubmissions] = useState([]);
@@ -64,6 +65,7 @@ export default function AdminValidationPage() {
           <EditDefiForm/> 
     </div>
     <div className="category-manager">
+      <EditFamilleForm/>
       <CategoryManager />
     </div>
     <div className="submission-container"> 
