@@ -162,7 +162,14 @@ $bronze: #cd7f32;
       font-size: 1.2rem;
       padding: 2rem 0.5rem;
     }
-
+    .place-1 
+    {
+      order: 1;
+    }
+    .place-2 
+    {
+      order: 2;
+    }
     .podium-box .box-rank {
       font-size: 1.4rem;
       width: 40px;

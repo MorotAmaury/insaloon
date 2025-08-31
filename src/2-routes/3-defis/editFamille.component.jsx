@@ -70,7 +70,7 @@ export default function EditFamilleForm() {
       {selectedFamilleId && (
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input
-            type="email"
+            type="text"
             name="nom"
             value={formData.nom}
             onChange={handleChange}
