@@ -7,7 +7,7 @@ const Home = () => {
   const [timeLeft, setTimeLeft] = useState({});
 
   useEffect(() => {
-    const targetDate = new Date("2025-09-01T00:00:00");
+    const targetDate = new Date("2025-09-01T19:00:00");
 
     const updateCountdown = () => {
       const now = new Date();

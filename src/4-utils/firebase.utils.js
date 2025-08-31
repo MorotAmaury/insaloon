@@ -158,7 +158,21 @@ export async function getAllFamilles() {
   const famSnap = await getDocs(collection(db, "familles"));
   return famSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
-
+export async function getVisibleDefis() {
+  const defisSnap = await getDocs(collection(db, "defis"));
+  const categoriesSnap = await getDocs(collection(db, "categories"));
+  // on mappe les catégories pour savoir lesquelles sont visibles
+  const visibleCategories = {};
+  categoriesSnap.docs.forEach((doc) => {
+    visibleCategories[doc.data().nom] = doc.data().visible;
+  });
+  console.log(visibleCategories);
+  
+  // on retourne que les défis dont la catégorie est visible
+  return defisSnap.docs
+    .map((doc) => ({ id: doc.id, ...doc.data() }))
+    .filter((defi) => visibleCategories[defi.categorie]);
+}
 export const getSoumissionsByFamille = async (familleNom) => {
   const q = query(collection(db, "soumissions"), where("famille", "==", familleNom));
   const snapshot = await getDocs(q);

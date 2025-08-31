@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllDefis, getAllFamilles, submitDefiProof } from "../../4-utils/firebase.utils";
+import { getVisibleDefis, getAllFamilles, submitDefiProof } from "../../4-utils/firebase.utils";
 import Select from 'react-select';
 import './submissionPage.styles.scss';
 
@@ -16,7 +16,9 @@ export default function SubmitDefiForm() {
 
   useEffect(() => {
     const fetchData = async () => {
-      setDefis(await getAllDefis());
+      setDefis(await getVisibleDefis());
+      console.log(defis);
+      
       setFamilles(await getAllFamilles());
     };
     fetchData();
