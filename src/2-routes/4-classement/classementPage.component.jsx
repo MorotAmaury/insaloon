@@ -12,7 +12,7 @@ export default function ClassementPage() {
       const data = await getAllFamilles();
       const sorted = data
         .filter((famille) => famille.nom && typeof famille.points === "number")
-        .sort((a, b) => b.points - a.points);
+        .sort((a, b) => Math.floor(b.points * b.coef) - Math.floor(a.points * a.coef));
 
       setClassement(sorted);
     };
@@ -47,7 +47,7 @@ export default function ClassementPage() {
           >
             <div className="box-rank">2</div>
             <div className="box-name">{classement[1].nom}</div>
-            <div className="box-points">{classement[1].points} pts</div>
+            <div className="box-points">{Math.floor(classement[1].points * classement[1].coef)} pts</div>
           </div>
         )}
         {classement[0] && (
@@ -57,7 +57,7 @@ export default function ClassementPage() {
           >
             <div className="box-rank">1</div>
             <div className="box-name">{classement[0].nom}</div>
-            <div className="box-points">{classement[0].points} pts</div>
+            <div className="box-points">{Math.floor(classement[0].points * classement[0].coef)} pts</div>
           </div>
         )}
         {classement[2] && (
@@ -67,7 +67,7 @@ export default function ClassementPage() {
           >
             <div className="box-rank">3</div>
             <div className="box-name">{classement[2].nom}</div>
-            <div className="box-points">{classement[2].points} pts</div>
+            <div className="box-points">{Math.floor(classement[2].points * classement[2].coef)} pts</div>
           </div>
         )}
       </div>
@@ -82,7 +82,7 @@ export default function ClassementPage() {
           >
             <span className="rank">{index + 4}</span>
             <span className="name">{famille.nom}</span>
-            <span className="points">{famille.points} pts</span>
+            <span className="points">{Math.floor(famille.points * famille.coef)} pts</span>
           </li>
         ))}
       </ul>

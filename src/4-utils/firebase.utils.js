@@ -256,3 +256,27 @@ export const verifyAdminCredentials = async (identifiant, motDePasse) => {
 
   return null;
 };
+
+// 🔄 Mettre à jour toutes les familles avec un coef basé sur nbPersonnes
+export async function updateFamillesCoef() {
+  const famillesRef = collection(db, "familles");
+  const snapshot = await getDocs(famillesRef);
+
+  const updates = snapshot.docs.map(async (docSnap) => {
+    const data = docSnap.data();
+    const nbPersonnes = data.nbPersonnes ?? 0;
+
+    let coef = 0;
+    if (nbPersonnes > 0) {
+      coef = 10 / nbPersonnes;
+    }
+
+    await updateDoc(doc(db, "familles", docSnap.id), {
+      coef,
+    });
+  });
+
+  await Promise.all(updates);
+  console.log("✅ Tous les coefficients ont été mis à jour !");
+}
+updateFamillesCoef()
